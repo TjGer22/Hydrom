@@ -1,0 +1,196 @@
+name: Release
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Triggered by pushing a version tag, e.g.  git tag v1.5.7 && git push --tags
+#
+# Pipeline
+#   verify-version  →  Check that the tag matches Firmwareversion in Globals.h
+#   build-release   →  Compile firmware + SPIFFS (needs: verify-version)
+#   create-release  →  Publish GitHub Release with all assets (needs: build-release)
+#
+# OTA asset
+#   The release always contains a file called exactly  firmware.bin
+#   so the ArduAutoUpdater on the device can locate and download it via the
+#   GitHub Releases API without any hard-coded version in its URL.
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"        # e.g. v1.5.7
+      - "v[0-9]+.[0-9]+.[0-9]+-rc[0-9]+"   # e.g. v1.5.7-rc1  (pre-release)
+
+permissions:
+  contents: write   # Required to create GitHub Releases
+
+# ─── 1. Verify tag ────────────────────────────────────────────────────────────
+jobs:
+  verify-version:
+    name: Verify tag matches Firmwareversion
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check version consistency
+        run: |
+          # Extract the version string from the #define, e.g. "1.5.7"
+          GLOBALS_VERSION=$(grep -E '^#define Firmwareversion' \
+            firmware/lib/FileManager/Globals.h \
+            | sed 's/.*"\(.*\)".*/\1/')
+
+          # Strip the leading 'v' from the tag
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          # Strip any pre-release suffix for the core version comparison
+          # (e.g. v1.5.7-rc1  → 1.5.7)
+          TAG_CORE="${TAG_VERSION%%-*}"
+
+          echo "Globals.h Firmwareversion : ${GLOBALS_VERSION}"
+          echo "Git tag                   : ${GITHUB_REF_NAME}"
+          echo "Tag core version          : ${TAG_CORE}"
+
+          if [ "${GLOBALS_VERSION}" != "${TAG_CORE}" ]; then
+            echo ""
+            echo "::error file=firmware/lib/FileManager/Globals.h::\
+          Tag '${GITHUB_REF_NAME}' does not match \
+          Firmwareversion \"${GLOBALS_VERSION}\" in Globals.h. \
+          Either bump Firmwareversion to ${TAG_CORE}, \
+          or push tag v${GLOBALS_VERSION}."
+            exit 1
+          fi
+
+          echo "Version check passed ✓"
+
+# ─── 2. Build ─────────────────────────────────────────────────────────────────
+  build-release:
+    name: Build firmware & SPIFFS
+    runs-on: ubuntu-latest
+    needs: verify-version
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('firmware/requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Cache PlatformIO packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: ${{ runner.os }}-pio-${{ hashFiles('firmware/platformio.ini') }}
+          restore-keys: ${{ runner.os }}-pio-
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade platformio
+
+      - name: Build SPIFFS filesystem image
+        working-directory: firmware
+        run: pio run --target buildfs --environment local
+
+      - name: Build firmware
+        working-directory: firmware
+        run: pio run --environment local
+
+      - name: Collect release assets
+        run: |
+          VERSION="${GITHUB_REF_NAME}"
+          mkdir -p release
+
+          # ── OTA asset ─────────────────────────────────────────────────────
+          # Named exactly "firmware.bin" so the ArduAutoUpdater can find it
+          # by name via the GitHub Releases API (assets[].name == "firmware.bin")
+          cp firmware/.pio/build/local/firmware.bin    release/firmware.bin
+
+          # ── Full-flash assets (versioned names for manual flashing) ───────
+          cp firmware/.pio/build/local/firmware.bin    release/hydrom-firmware-${VERSION}.bin
+          cp firmware/.pio/build/local/partitions.bin  release/hydrom-partitions-${VERSION}.bin
+          cp firmware/.pio/build/local/spiffs.bin      release/hydrom-spiffs-${VERSION}.bin
+
+          # ── Convenience archive with flash scripts ────────────────────────
+          zip -j release/hydrom-flash-${VERSION}.zip \
+              firmware/.pio/build/local/firmware.bin \
+              firmware/.pio/build/local/partitions.bin \
+              firmware/.pio/build/local/spiffs.bin \
+              firmware/Flasher/Flash.sh \
+              firmware/Flasher/Flash_Mac.sh
+
+          echo "── Release assets ────────────────────────────────"
+          ls -lh release/
+
+      - name: Upload build artifacts (for downstream job)
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-assets-${{ github.ref_name }}
+          path: release/
+          retention-days: 7
+
+# ─── 3. Create GitHub Release ─────────────────────────────────────────────────
+  create-release:
+    name: Publish GitHub Release
+    runs-on: ubuntu-latest
+    needs: build-release
+
+    steps:
+      - name: Checkout (for CHANGELOG)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: release-assets-${{ github.ref_name }}
+          path: release/
+
+      - name: Extract changelog entry for this version
+        id: changelog
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+
+          # Try to extract the section for this version from CHANGELOG.md
+          # Expects sections like "## [1.5.7]" or "## 1.5.7"
+          NOTES=$(awk \
+            "/^## [\[]*${VERSION}[\]]*/,/^## [\[]*[0-9]+\.[0-9]+\.[0-9]+[\]]*/" \
+            CHANGELOG.md 2>/dev/null \
+            | head -n -1 | tail -n +2)
+
+          if [ -z "$NOTES" ]; then
+            NOTES="See [CHANGELOG.md](CHANGELOG.md) for details."
+          fi
+
+          # Write to a file to preserve newlines
+          echo "${NOTES}" > release_notes.md
+          echo "Found changelog entry: $(wc -l < release_notes.md) lines"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Hydrom ${{ github.ref_name }}"
+          tag_name: ${{ github.ref_name }}
+          draft: false
+          prerelease: >-
+            ${{
+              contains(github.ref_name, '-rc')   ||
+              contains(github.ref_name, '-beta')  ||
+              contains(github.ref_name, '-alpha')
+            }}
+          body_path: release_notes.md
+          files: |
+            release/firmware.bin
+            release/hydrom-firmware-*.bin
+            release/hydrom-partitions-*.bin
+            release/hydrom-spiffs-*.bin
+            release/hydrom-flash-*.zip

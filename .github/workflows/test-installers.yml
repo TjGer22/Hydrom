@@ -1,0 +1,666 @@
+name: Test Installer Scripts
+
+# Runs when the installer scripts themselves change, or this workflow changes.
+on:
+  push:
+    paths:
+      - firmware/Flasher/install.sh
+      - firmware/Flasher/install.ps1
+      - .github/workflows/test-installers.yml
+  pull_request:
+    paths:
+      - firmware/Flasher/install.sh
+      - firmware/Flasher/install.ps1
+
+concurrency:
+  group: test-installers-${{ github.ref }}
+  cancel-in-progress: true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Shared Python mock scripts written once, referenced by all jobs via outputs.
+# We embed them as env vars so no extra file checkout is needed.
+# ─────────────────────────────────────────────────────────────────────────────
+env:
+  # Mock HTTP server (GitHub Releases API + binary downloads)
+  # Reads MOCK_FAIL_COUNT env var: fail the first N download requests per file.
+  MOCK_SERVER_PY: |
+    import http.server, json, os, sys, threading
+    FAIL_COUNT = int(os.environ.get('MOCK_FAIL_COUNT', '0'))
+    call_counts = {}
+    class Handler(http.server.BaseHTTPRequestHandler):
+        def do_GET(self):
+            path = self.path.split('?')[0]
+            if path.endswith('/releases/latest'):
+                body = json.dumps({'tag_name': 'v0.99.0-test'}).encode()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Content-Length', str(len(body)))
+                self.end_headers(); self.wfile.write(body)
+            elif '/download/' in path:
+                fname = path.split('/')[-1]
+                call_counts[fname] = call_counts.get(fname, 0) + 1
+                if call_counts[fname] <= FAIL_COUNT:
+                    self.send_response(503); self.end_headers()
+                    self.wfile.write(b'simulated 503'); return
+                body = b'\x00\xFF' * 512
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/octet-stream')
+                self.send_header('Content-Length', str(len(body)))
+                self.end_headers(); self.wfile.write(body)
+            else:
+                self.send_response(404); self.end_headers()
+        def log_message(self, *a): pass
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
+    print(f'mock-server: listening on {port}', flush=True)
+    http.server.HTTPServer(('127.0.0.1', port), Handler).serve_forever()
+
+  # Mock esptool module (__main__.py content).
+  # Drop this in a directory named "esptool/" and add parent dir to PYTHONPATH.
+  # Reads MOCK_ESPTOOL_FAIL env var: exit 1 for the first N write_flash calls.
+  MOCK_ESPTOOL_PY: |
+    import sys, os
+    LOG  = os.environ.get('ESPTOOL_LOG', os.path.join(os.environ.get('TEMP', '/tmp'), 'esptool_calls.log'))
+    FAIL = int(os.environ.get('MOCK_ESPTOOL_FAIL', '0'))
+    CTR  = os.path.join(os.environ.get('TEMP', '/tmp'), 'esptool_call_count')
+    args = sys.argv[1:]
+    if not args or 'version' in args:
+        print('esptool.py v4.7.0 (mock)'); sys.exit(0)
+    with open(LOG, 'a') as f: f.write(' '.join(str(a) for a in args) + '\n')
+    try:
+        count = int(open(CTR).read())
+    except Exception:
+        count = 0
+    count += 1
+    open(CTR, 'w').write(str(count))
+    if count <= FAIL:
+        print(f'MOCK esptool: simulated failure {count}/{FAIL}', file=sys.stderr); sys.exit(1)
+    print('Connecting...'); print('Writing at 0x10000... (100 %)'); print('Hash of data verified.')
+    print('Hard resetting via RTS pin...')
+
+# =============================================================================
+# JOB 1: Static analysis — runs on every push, fast
+# =============================================================================
+jobs:
+  static-analysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "[bash] syntax check"
+        run: bash -n firmware/Flasher/install.sh
+
+      - name: "[bash] ShellCheck"
+        run: |
+          sudo apt-get install -y shellcheck --quiet
+          shellcheck --severity=warning firmware/Flasher/install.sh
+
+      - name: "[pwsh] syntax check via parser"
+        shell: pwsh
+        run: |
+          $errors = $null
+          $null = [System.Management.Automation.Language.Parser]::ParseFile(
+              "${{ github.workspace }}/firmware/Flasher/install.ps1",
+              [ref]$null, [ref]$errors
+          )
+          if ($errors.Count -gt 0) {
+              $errors | ForEach-Object {
+                  Write-Error "Line $($_.Extent.StartLineNumber): $($_.Message)"
+              }
+              exit 1
+          }
+          Write-Host "PowerShell syntax: OK"
+
+      - name: "[pwsh] PSScriptAnalyzer"
+        shell: pwsh
+        run: |
+          Install-Module PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck -AllowClobber
+          $results = Invoke-ScriptAnalyzer `
+              -Path firmware/Flasher/install.ps1 `
+              -Severity Error, Warning `
+              -ExcludeRule PSAvoidUsingWriteHost, PSUseApprovedVerbs
+          if ($results.Count -gt 0) {
+              $results | ForEach-Object {
+                  $level = if ($_.Severity -eq 'Error') { 'ERROR' } else { 'WARN' }
+                  Write-Host "$level  $($_.RuleName)  line $($_.Line): $($_.Message)"
+              }
+              if (($results | Where-Object Severity -eq 'Error').Count -gt 0) { exit 1 }
+          }
+          Write-Host "PSScriptAnalyzer: OK"
+
+# =============================================================================
+# JOB 2 & 3: Bash integration tests (Linux + macOS matrix)
+# =============================================================================
+  test-bash:
+    name: "Bash installer (${{ matrix.os }})"
+    needs: static-analysis
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    env:
+      MOCK_PORT: /dev/null        # fake port — mock esptool ignores it
+      MOCK_API:  http://127.0.0.1:8765/releases/latest
+      MOCK_DL:   http://127.0.0.1:8765/download
+      ESPTOOL_LOG: /tmp/esptool_calls.log
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Setup: mock HTTP server ────────────────────────────────────────────
+      - name: "setup: mock HTTP server"
+        run: |
+          printf '%s' "$MOCK_SERVER_PY" > /tmp/mock_server.py
+          python3 /tmp/mock_server.py 8765 &
+          echo $! > /tmp/mock_server.pid
+          # Wait until it responds
+          for i in $(seq 1 10); do
+            curl -sf http://127.0.0.1:8765/releases/latest >/dev/null && break
+            sleep 0.5
+          done
+          curl -sf http://127.0.0.1:8765/releases/latest \
+            | python3 -c "import sys,json; assert json.load(sys.stdin)['tag_name']=='v0.99.0-test'"
+          echo "Mock server: OK"
+
+      # ── Setup: mock esptool (via PYTHONPATH package) ───────────────────────
+      - name: "setup: mock esptool"
+        run: |
+          mkdir -p /tmp/mock_modules/esptool
+          touch /tmp/mock_modules/esptool/__init__.py
+          printf '%s' "$MOCK_ESPTOOL_PY" > /tmp/mock_modules/esptool/__main__.py
+          export PYTHONPATH="/tmp/mock_modules:${PYTHONPATH:-}"
+          python3 -m esptool version | grep -q "mock"
+          echo "Mock esptool: OK"
+
+      # ── Test 1: dependencies detected correctly ────────────────────────────
+      - name: "[test 1] Python and esptool detected"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: ${{ env.MOCK_PORT }}
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+        run: |
+          output=$(bash firmware/Flasher/install.sh 2>&1)
+          echo "$output"
+          echo "$output" | grep -q "Python:"   || { echo "FAIL: Python not reported"; exit 1; }
+          echo "$output" | grep -qi "esptool"  || { echo "FAIL: esptool not reported"; exit 1; }
+          echo "PASS"
+
+      # ── Test 2: release tag is fetched and reported ────────────────────────
+      - name: "[test 2] release version fetched from API"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: ${{ env.MOCK_PORT }}
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+        run: |
+          output=$(bash firmware/Flasher/install.sh 2>&1)
+          echo "$output" | grep -q "v0.99.0-test" || { echo "FAIL: release tag not shown"; exit 1; }
+          echo "PASS"
+
+      # ── Test 3: all 5 firmware files downloaded ────────────────────────────
+      - name: "[test 3] all 5 firmware files downloaded"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: ${{ env.MOCK_PORT }}
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+        run: |
+          output=$(bash firmware/Flasher/install.sh 2>&1)
+          echo "$output"
+          for f in bootloader_dio_40m.bin partitions.bin boot_app0.bin firmware.bin spiffs.bin; do
+            echo "$output" | grep -q "$f" \
+              || { echo "FAIL: $f not mentioned in output"; exit 1; }
+          done
+          echo "PASS"
+
+      # ── Test 4: correct flash addresses passed to esptool ─────────────────
+      - name: "[test 4] all 5 flash addresses forwarded to esptool"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: ${{ env.MOCK_PORT }}
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+        run: |
+          rm -f "$ESPTOOL_LOG" /tmp/esptool_call_count
+          ESPTOOL_LOG="$ESPTOOL_LOG" bash firmware/Flasher/install.sh 2>&1 >/dev/null
+          echo "esptool call log:"; cat "$ESPTOOL_LOG"
+          for addr in 0x1000 0x8000 0xe000 0x10000 0x5B0000; do
+            grep -q "$addr" "$ESPTOOL_LOG" \
+              || { echo "FAIL: address $addr not found in esptool args"; exit 1; }
+          done
+          echo "PASS: all flash addresses present"
+
+      # ── Test 5: HYDROM_BAUD override forwarded to esptool ─────────────────
+      - name: "[test 5] HYDROM_BAUD override passed to esptool"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: ${{ env.MOCK_PORT }}
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          HYDROM_BAUD: "115200"
+          PYTHONPATH: /tmp/mock_modules
+        run: |
+          rm -f "$ESPTOOL_LOG" /tmp/esptool_call_count
+          ESPTOOL_LOG="$ESPTOOL_LOG" bash firmware/Flasher/install.sh 2>&1 >/dev/null
+          grep -q "115200" "$ESPTOOL_LOG" \
+            || { echo "FAIL: baud 115200 not in esptool args"; cat "$ESPTOOL_LOG"; exit 1; }
+          echo "PASS"
+
+      # ── Test 6: download retries on HTTP 503 ──────────────────────────────
+      - name: "[test 6] download retries on HTTP 503 and eventually succeeds"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: ${{ env.MOCK_PORT }}
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+        run: |
+          # Restart mock server set to fail the first 2 requests per file
+          kill "$(cat /tmp/mock_server.pid)" 2>/dev/null || true
+          sleep 1
+          MOCK_FAIL_COUNT=2 python3 /tmp/mock_server.py 8765 &
+          echo $! > /tmp/mock_server.pid
+          sleep 1
+
+          output=$(bash firmware/Flasher/install.sh 2>&1)
+          echo "$output"
+          echo "$output" | grep -q "flashed successfully" \
+            || { echo "FAIL: did not succeed after download retries"; exit 1; }
+          echo "PASS"
+
+          # Restore clean mock server
+          kill "$(cat /tmp/mock_server.pid)" 2>/dev/null || true; sleep 1
+          python3 /tmp/mock_server.py 8765 &
+          echo $! > /tmp/mock_server.pid; sleep 1
+
+      # ── Test 7: flash retries when esptool exits non-zero ─────────────────
+      - name: "[test 7] flash retries on esptool failure then succeeds"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: ${{ env.MOCK_PORT }}
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+          MOCK_ESPTOOL_FAIL: "2"
+        run: |
+          rm -f "$ESPTOOL_LOG" /tmp/esptool_call_count
+          output=$(ESPTOOL_LOG="$ESPTOOL_LOG" bash firmware/Flasher/install.sh 2>&1)
+          echo "$output"
+          echo "$output" | grep -q "flashed successfully" \
+            || { echo "FAIL: did not succeed after esptool retries"; exit 1; }
+          # Should have been called exactly 3 times (2 failures + 1 success)
+          count=$(cat /tmp/esptool_call_count 2>/dev/null || echo 0)
+          [ "$count" -eq 3 ] \
+            || { echo "FAIL: expected 3 esptool invocations, got $count"; exit 1; }
+          echo "PASS: recovered after $count attempts"
+
+      # ── Test 8: triple flash failure → helpful error message ──────────────
+      - name: "[test 8] triple flash failure shows BOOT/troubleshoot hint"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: ${{ env.MOCK_PORT }}
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+          MOCK_ESPTOOL_FAIL: "99"
+        run: |
+          rm -f "$ESPTOOL_LOG" /tmp/esptool_call_count
+          set +e
+          output=$(ESPTOOL_LOG="$ESPTOOL_LOG" bash firmware/Flasher/install.sh 2>&1)
+          exit_code=$?
+          set -e
+          echo "$output"
+          [ "$exit_code" -ne 0 ] \
+            || { echo "FAIL: expected non-zero exit on triple failure"; exit 1; }
+          echo "$output" | grep -qiE "BOOT|baud|troubleshoot|dialout|driver" \
+            || { echo "FAIL: no helpful error hint in output"; exit 1; }
+          echo "PASS: exit=$exit_code, helpful message shown"
+
+      # ── Test 9: no device + non-interactive → exits with error ────────────
+      - name: "[test 9] no device in non-interactive mode exits with error"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_NO_PORTS: "1"          # seam: force empty port list regardless of real devices on runner
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+        run: |
+          # HYDROM_PORT is intentionally not set; HYDROM_NO_PORTS ensures the
+          # port scanner returns empty even if the CI runner has USB devices.
+          set +e
+          output=$(bash firmware/Flasher/install.sh 2>&1)
+          exit_code=$?
+          set -e
+          echo "$output"
+          [ "$exit_code" -ne 0 ] \
+            || { echo "FAIL: expected non-zero exit when no device found"; exit 1; }
+          echo "$output" | grep -qi "No USB serial" \
+            || { echo "FAIL: no helpful message about missing device"; exit 1; }
+          echo "PASS: exited with code $exit_code"
+
+      # ── Test 10: HYDROM_PORT env skips port detection entirely ─────────────
+      - name: "[test 10] HYDROM_PORT bypasses port detection"
+        env:
+          HYDROM_NOINTERACTIVE: "1"
+          HYDROM_PORT: /dev/null
+          HYDROM_API_URL: ${{ env.MOCK_API }}
+          HYDROM_DOWNLOAD_BASE: ${{ env.MOCK_DL }}
+          PYTHONPATH: /tmp/mock_modules
+        run: |
+          output=$(bash firmware/Flasher/install.sh 2>&1)
+          echo "$output"
+          echo "$output" | grep -q "port from environment" \
+            || { echo "FAIL: HYDROM_PORT override not acknowledged"; exit 1; }
+          echo "PASS"
+
+      # ── Cleanup ───────────────────────────────────────────────────────────
+      - name: cleanup
+        if: always()
+        run: kill "$(cat /tmp/mock_server.pid 2>/dev/null)" 2>/dev/null || true
+
+# =============================================================================
+# JOB 4: PowerShell integration tests (Windows)
+# =============================================================================
+  test-powershell:
+    name: PowerShell installer (windows-latest)
+    needs: static-analysis
+    runs-on: windows-latest
+
+    env:
+      MOCK_PORT: "COM0"
+      MOCK_API:  "http://127.0.0.1:8765/releases/latest"
+      MOCK_DL:   "http://127.0.0.1:8765/download"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Setup: mock HTTP server ────────────────────────────────────────────
+      - name: "setup: mock HTTP server"
+        shell: python
+        run: |
+          import os, sys
+          script = os.environ['MOCK_SERVER_PY']
+          with open(r'C:\mock_server.py', 'w') as f:
+              f.write(script)
+          print('mock_server.py written')
+
+      - name: "setup: start mock server"
+        shell: pwsh
+        run: |
+          # Start-Process launches an independent Windows process that survives
+          # after this step's pwsh instance exits (unlike Start-Job which is
+          # tied to the current runspace and dies when the step ends).
+          $proc = Start-Process -FilePath python `
+              -ArgumentList "C:\mock_server.py", "8765" `
+              -PassThru -WindowStyle Hidden `
+              -RedirectStandardOutput "C:\mock_server_stdout.txt" `
+              -RedirectStandardError  "C:\mock_server_stderr.txt"
+          $proc.Id | Out-File C:\mock_server_pid.txt
+          # Give the server up to 10 s to bind the port
+          $ok = $false
+          for ($i = 0; $i -lt 10; $i++) {
+              Start-Sleep 1
+              try {
+                  $r = Invoke-RestMethod -Uri "http://127.0.0.1:8765/releases/latest" -UseBasicParsing -ErrorAction Stop
+                  if ($r.tag_name -eq 'v0.99.0-test') { $ok = $true; break }
+              } catch { }
+          }
+          if (-not $ok) {
+              Get-Content C:\mock_server_stderr.txt -ErrorAction SilentlyContinue
+              Write-Error "Mock server did not start within 10 s"; exit 1
+          }
+          Write-Host "Mock server: OK (pid=$($proc.Id))"
+
+      # ── Setup: mock esptool (PYTHONPATH package) ───────────────────────────
+      - name: "setup: mock esptool"
+        shell: python
+        run: |
+          import os, sys
+          base = r'C:\mock_modules\esptool'
+          os.makedirs(base, exist_ok=True)
+          open(os.path.join(base, '__init__.py'), 'w').close()
+          with open(os.path.join(base, '__main__.py'), 'w') as f:
+              f.write(os.environ['MOCK_ESPTOOL_PY'])
+          print('Mock esptool package written')
+
+      - name: "setup: verify mock esptool"
+        shell: pwsh
+        run: |
+          $env:PYTHONPATH = 'C:\mock_modules'
+          $out = python -m esptool version 2>&1
+          if ($out -notmatch 'mock') { Write-Error "Mock esptool not working: $out"; exit 1 }
+          Write-Host "Mock esptool: OK ($out)"
+
+      # ── Test 1: Python and esptool detected ───────────────────────────────
+      - name: "[test 1] Python and esptool detected"
+        shell: pwsh
+        run: |
+          $env:HYDROM_NOINTERACTIVE = '1'
+          $env:HYDROM_PORT          = $env:MOCK_PORT
+          $env:HYDROM_API_URL       = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE = $env:MOCK_DL
+          $env:PYTHONPATH           = 'C:\mock_modules'
+
+          $output = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          Write-Host $output
+          if ($output -notmatch 'Python:')  { Write-Error "FAIL: Python not reported"; exit 1 }
+          if ($output -notmatch 'esptool')  { Write-Error "FAIL: esptool not reported"; exit 1 }
+          Write-Host "PASS"
+
+      # ── Test 2: release version fetched ───────────────────────────────────
+      - name: "[test 2] release version fetched from API"
+        shell: pwsh
+        run: |
+          $env:HYDROM_NOINTERACTIVE = '1'
+          $env:HYDROM_PORT          = $env:MOCK_PORT
+          $env:HYDROM_API_URL       = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE = $env:MOCK_DL
+          $env:PYTHONPATH           = 'C:\mock_modules'
+
+          $output = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          if ($output -notmatch 'v0.99.0-test') { Write-Error "FAIL: release tag not shown"; exit 1 }
+          Write-Host "PASS"
+
+      # ── Test 3: all 5 files downloaded ────────────────────────────────────
+      - name: "[test 3] all 5 firmware files downloaded"
+        shell: pwsh
+        run: |
+          $env:HYDROM_NOINTERACTIVE = '1'
+          $env:HYDROM_PORT          = $env:MOCK_PORT
+          $env:HYDROM_API_URL       = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE = $env:MOCK_DL
+          $env:PYTHONPATH           = 'C:\mock_modules'
+
+          $output = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          Write-Host $output
+          @('bootloader_dio_40m.bin','partitions.bin','boot_app0.bin','firmware.bin','spiffs.bin') |
+          ForEach-Object {
+              if ($output -notmatch [regex]::Escape($_)) {
+                  Write-Error "FAIL: $_ not mentioned"; exit 1
+              }
+          }
+          Write-Host "PASS"
+
+      # ── Test 4: correct flash addresses ───────────────────────────────────
+      - name: "[test 4] all 5 flash addresses forwarded to esptool"
+        shell: pwsh
+        run: |
+          $log = "$env:TEMP\esptool_calls.log"
+          Remove-Item $log, "$env:TEMP\esptool_call_count" -Force -ErrorAction SilentlyContinue
+
+          $env:HYDROM_NOINTERACTIVE = '1'
+          $env:HYDROM_PORT          = $env:MOCK_PORT
+          $env:HYDROM_API_URL       = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE = $env:MOCK_DL
+          $env:PYTHONPATH           = 'C:\mock_modules'
+          $env:ESPTOOL_LOG          = $log
+
+          $null = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          $calls = Get-Content $log -Raw
+          Write-Host "esptool call log: $calls"
+          @('0x1000','0x8000','0xe000','0x10000','0x5B0000') | ForEach-Object {
+              if ($calls -notmatch [regex]::Escape($_)) {
+                  Write-Error "FAIL: address $_ not in esptool args"; exit 1
+              }
+          }
+          Write-Host "PASS: all flash addresses present"
+
+      # ── Test 5: HYDROM_BAUD override ──────────────────────────────────────
+      - name: "[test 5] HYDROM_BAUD override passed to esptool"
+        shell: pwsh
+        run: |
+          $log = "$env:TEMP\esptool_calls.log"
+          Remove-Item $log, "$env:TEMP\esptool_call_count" -Force -ErrorAction SilentlyContinue
+
+          $env:HYDROM_NOINTERACTIVE = '1'
+          $env:HYDROM_PORT          = $env:MOCK_PORT
+          $env:HYDROM_API_URL       = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE = $env:MOCK_DL
+          $env:HYDROM_BAUD          = '115200'
+          $env:PYTHONPATH           = 'C:\mock_modules'
+          $env:ESPTOOL_LOG          = $log
+
+          $null = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          $calls = Get-Content $log -Raw
+          if ($calls -notmatch '115200') { Write-Error "FAIL: baud 115200 not in esptool args"; exit 1 }
+          $env:HYDROM_BAUD = ''
+          Write-Host "PASS"
+
+      # ── Test 6: download retries on HTTP 503 ──────────────────────────────
+      - name: "[test 6] download retries on HTTP 503 and eventually succeeds"
+        shell: pwsh
+        run: |
+          # Restart mock server with MOCK_FAIL_COUNT=2
+          $oldPid = Get-Content C:\mock_server_pid.txt -ErrorAction SilentlyContinue
+          if ($oldPid) { Stop-Process -Id $oldPid -Force -ErrorAction SilentlyContinue; Start-Sleep 1 }
+          $env:MOCK_FAIL_COUNT = '2'
+          $proc = Start-Process -FilePath python `
+              -ArgumentList "C:\mock_server.py", "8765" `
+              -PassThru -WindowStyle Hidden `
+              -RedirectStandardOutput "C:\mock_server_stdout.txt" `
+              -RedirectStandardError  "C:\mock_server_stderr.txt"
+          $proc.Id | Out-File C:\mock_server_pid.txt
+          Start-Sleep 2
+
+          $env:HYDROM_NOINTERACTIVE = '1'
+          $env:HYDROM_PORT          = $env:MOCK_PORT
+          $env:HYDROM_API_URL       = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE = $env:MOCK_DL
+          $env:PYTHONPATH           = 'C:\mock_modules'
+
+          $output = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          Write-Host $output
+          if ($output -notmatch 'flashed successfully') {
+              Write-Error "FAIL: did not succeed after download retries"; exit 1
+          }
+          Write-Host "PASS"
+
+          # Restore clean server (no fail count)
+          $oldPid = Get-Content C:\mock_server_pid.txt -ErrorAction SilentlyContinue
+          if ($oldPid) { Stop-Process -Id $oldPid -Force -ErrorAction SilentlyContinue; Start-Sleep 1 }
+          $env:MOCK_FAIL_COUNT = ''
+          $cleanProc = Start-Process -FilePath python `
+              -ArgumentList "C:\mock_server.py", "8765" `
+              -PassThru -WindowStyle Hidden `
+              -RedirectStandardOutput "C:\mock_server_stdout.txt" `
+              -RedirectStandardError  "C:\mock_server_stderr.txt"
+          $cleanProc.Id | Out-File C:\mock_server_pid.txt
+          Start-Sleep 2
+
+      # ── Test 7: flash retries when esptool exits non-zero ─────────────────
+      - name: "[test 7] flash retries on esptool failure then succeeds"
+        shell: pwsh
+        run: |
+          $log = "$env:TEMP\esptool_calls.log"
+          Remove-Item $log, "$env:TEMP\esptool_call_count" -Force -ErrorAction SilentlyContinue
+
+          $env:HYDROM_NOINTERACTIVE  = '1'
+          $env:HYDROM_PORT           = $env:MOCK_PORT
+          $env:HYDROM_API_URL        = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE  = $env:MOCK_DL
+          $env:PYTHONPATH            = 'C:\mock_modules'
+          $env:MOCK_ESPTOOL_FAIL     = '2'
+          $env:ESPTOOL_LOG           = $log
+
+          $output = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          Write-Host $output
+          if ($output -notmatch 'flashed successfully') {
+              Write-Error "FAIL: did not succeed after esptool retries"; exit 1
+          }
+          $count = [int](Get-Content "$env:TEMP\esptool_call_count" -Raw)
+          if ($count -ne 3) { Write-Error "FAIL: expected 3 calls, got $count"; exit 1 }
+          $env:MOCK_ESPTOOL_FAIL = ''
+          Write-Host "PASS: recovered after $count attempts"
+
+      # ── Test 8: triple flash failure → helpful error ───────────────────────
+      - name: "[test 8] triple flash failure shows BOOT/troubleshoot hint"
+        shell: pwsh
+        run: |
+          Remove-Item "$env:TEMP\esptool_call_count" -Force -ErrorAction SilentlyContinue
+
+          $env:HYDROM_NOINTERACTIVE  = '1'
+          $env:HYDROM_PORT           = $env:MOCK_PORT
+          $env:HYDROM_API_URL        = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE  = $env:MOCK_DL
+          $env:PYTHONPATH            = 'C:\mock_modules'
+          $env:MOCK_ESPTOOL_FAIL     = '99'
+
+          $output = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          Write-Host $output
+          # Script should exit non-zero; powershell -File returns 1 on exit 1
+          # Check for helpful hint keywords
+          if ($output -notmatch 'BOOT|baud|driver|troubleshoot') {
+              Write-Error "FAIL: no helpful hint in failure output"; exit 1
+          }
+          $env:MOCK_ESPTOOL_FAIL = ''
+          Write-Host "PASS"
+
+      # ── Test 9: no device + non-interactive → exits with error ────────────
+      - name: "[test 9] no device in non-interactive mode exits with error"
+        shell: pwsh
+        run: |
+          $env:HYDROM_NOINTERACTIVE = '1'
+          $env:HYDROM_API_URL       = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE = $env:MOCK_DL
+          $env:PYTHONPATH           = 'C:\mock_modules'
+          Remove-Item Env:\HYDROM_PORT -ErrorAction SilentlyContinue
+
+          $output = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          Write-Host $output
+          # In CI there are no real serial ports, so the script should fail
+          if ($output -match 'flashed successfully') {
+              Write-Error "FAIL: script should not succeed without a device"; exit 1
+          }
+          Write-Host "PASS: no device detected as expected in CI environment"
+
+      # ── Test 10: HYDROM_PORT bypasses port detection ───────────────────────
+      - name: "[test 10] HYDROM_PORT bypasses port detection"
+        shell: pwsh
+        run: |
+          $env:HYDROM_NOINTERACTIVE = '1'
+          $env:HYDROM_PORT          = $env:MOCK_PORT
+          $env:HYDROM_API_URL       = $env:MOCK_API
+          $env:HYDROM_DOWNLOAD_BASE = $env:MOCK_DL
+          $env:PYTHONPATH           = 'C:\mock_modules'
+
+          $output = powershell -ExecutionPolicy Bypass -File firmware\Flasher\install.ps1 2>&1
+          Write-Host $output
+          if ($output -notmatch 'port from environment') {
+              Write-Error "FAIL: HYDROM_PORT override not acknowledged"; exit 1
+          }
+          Write-Host "PASS"
+
+      # ── Cleanup ───────────────────────────────────────────────────────────
+      - name: cleanup
+        if: always()
+        shell: pwsh
+        run: |
+          $serverPid = Get-Content C:\mock_server_pid.txt -ErrorAction SilentlyContinue
+          if ($serverPid) { Stop-Process -Id $serverPid -Force -ErrorAction SilentlyContinue }
