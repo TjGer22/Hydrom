@@ -1,0 +1,79 @@
+/* ── Hydrom brand ── */
+:root {
+  --hydrom-green:       #99BF37;
+  --hydrom-green-dark:  #7a9928;
+  --hydrom-green-light: #b8d86b;
+  --hydrom-bg:          #1c1c1c;
+  --hydrom-surface:     #242424;
+}
+
+/* Custom primary colour for both schemes */
+[data-md-color-primary="custom"],
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:             #99BF37;
+  --md-primary-fg-color--light:      #b8d86b;
+  --md-primary-fg-color--dark:       #7a9928;
+  --md-accent-fg-color:              #99BF37;
+  --md-accent-fg-color--transparent: rgba(153,191,55,.12);
+}
+
+/* Dark background */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color:          #1c1c1c;
+  --md-default-bg-color--light:   #242424;
+  --md-default-bg-color--lighter: #2e2e2e;
+  --md-default-bg-color--lightest:#383838;
+  --md-code-bg-color:             #242424;
+}
+
+/* Header */
+.md-header { background-color: #1c1c1c !important; }
+.md-tabs   { background-color: #242424 !important; }
+
+/* Nav hover + active */
+.md-nav__link:is(:focus,:hover) { color: #99BF37; }
+.md-nav__link--active            { color: #99BF37; font-weight: 600; }
+
+/* Hero image */
+.hero-img {
+  width: 100%;
+  max-height: 440px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 1.5rem 0 2rem;
+  box-shadow: 0 6px 32px rgba(0,0,0,.55);
+}
+
+/* Feature grid on home page */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.feature-card {
+  background: var(--hydrom-surface, #242424);
+  border: 1px solid rgba(153,191,55,.25);
+  border-radius: 8px;
+  padding: 1.1rem 1.2rem;
+}
+.feature-card h3 {
+  margin: 0 0 .4rem;
+  font-size: .95rem;
+  color: #99BF37;
+}
+.feature-card p { margin: 0; font-size: .88rem; }
+
+/* Quick-start steps */
+.step-table td:first-child { white-space: nowrap; font-weight: 600; color: #99BF37; }
+
+/* Green CTA button */
+.md-button--primary {
+  background-color: #99BF37 !important;
+  border-color:     #99BF37 !important;
+  color: #1c1c1c !important;
+}
+.md-button--primary:hover {
+  background-color: #7a9928 !important;
+  border-color:     #7a9928 !important;
+}

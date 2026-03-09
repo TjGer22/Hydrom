@@ -1,0 +1,125 @@
+site_name: Hydrom
+site_description: Open-source smart hydrometer for real-time fermentation monitoring
+site_url: https://tjger22.github.io/Hydrom
+repo_url: https://github.com/TjGer22/Hydrom
+repo_name: TjGer22/Hydrom
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  logo: assets/images/Hydrom_logo.png
+  favicon: assets/images/Hydrom_logo.png
+  palette:
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Overview: getting-started/README.md
+    - Safety Warnings: getting-started/warnings-read-before-use.md
+    - Disinfect Before Use: getting-started/disinfect-before-use.md
+    - Charging: services/charging-the-hydrom.md
+    - Switching On: services/turn-on-the-hydrom.md
+    - Indicator LEDs: getting-started/indicator-leds.md
+    - Configuration Mode: services/wakeup-the-hydrom.md
+    - Wi-Fi Setup: services/wifi-setup.md
+    - Open the Web UI: services/access-to-the-user-interface.md
+  - Calibration:
+    - When and Why to Calibrate: calibration/check-calibration.md
+    - Quick Method – Plainwater: services/plainwater.md
+    - Accurate Method – Reference: calibration/calibration-process/reference-method.md
+    - Manual Formula Entry: calibration/calibration-process/manually-change-the-formula.md
+    - Attitude Sensor Calibration: calibration/attitude-sensor-calibration.md
+  - Connect Services:
+    - Brewfather: services/connect_to_brewfather.md
+    - Brewer's Friend: services/connect-the-hydrom-to-brewers-friend.md
+    - Brewblox: services/connect_to_brewblox.md
+    - Grainfather: services/connect_to_grainfather.md
+    - MQTT: services/connect_to_mqtt.md
+    - HTTP (Webhooks): services/connect_to_http.md
+    - Google Sheets: services/connect_to_googlesheets.md
+    - Ubidots: services/connect_to_ubidots.md
+    - Telegram: services/connect-the-hydrom-to-telegram.md
+    - BierBot Bricks: services/connect-the-hydrom-to-bierbot-bricks.md
+    - iRelay Display: services/connect-the-hydrom-to-irelays-display.md
+    - Bluetooth (BLE):
+      - Enable Bluetooth: services/bluetooth/README.md
+      - iOS App: services/bluetooth/ios-app.md
+  - Settings:
+    - Device Name: configuration/changing-the-hydrom-name.md
+    - Display Units: configuration/customize-units.md
+    - Measurement Interval: configuration/enable-deepsleep.md
+    - Temperature Compensation: configuration/setting-up-the-temperature-compensation.md
+    - Headstand Detection: configuration/activate-headstand-detection.md
+    - Factory Reset: configuration/factory-reset.md
+  - Firmware Update: services/firmware-update.md
+  - Troubleshooting:
+    - Web UI Unreachable: troubleshooting/webui-unreachable.md
+    - Service Not Receiving Data: troubleshooting/service-no-data.md
+  - Hardware:
+    - Overview: hardware/index.md
+    - PCB Design: hardware/pcb.md
+    - Bill of Materials: hardware/bom.md
+    - Production Files: hardware/production.md
+  - Contributing: contributing.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TjGer22/Hydrom
+  version:
+    provider: mike

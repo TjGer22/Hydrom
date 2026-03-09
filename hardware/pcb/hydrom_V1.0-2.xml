@@ -1,0 +1,1884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/Users/simonndungu/Documents/KiCad/hydrom_V1.0.1/src/hydrom_V1.0.1.kicad_sch</source>
+    <date>2022 July 26, Tuesday 12:27:40</date>
+    <tool>Eeschema (6.0.1-0)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>HYDROM  SMT Version</title>
+        <company/>
+        <rev>v2.0</rev>
+        <date>2021-07-23</date>
+        <source>hydrom_V1.0.1.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>10uF</value>
+      <footprint>Capacitor_Tantalum_SMD:CP_EIA-3216-18_Kemet-A</footprint>
+      <fields>
+        <field name="LCSC.com PN">C2156473</field>
+        <field name="MPN">293D106X0010A2TE3</field>
+      </fields>
+      <libsource lib="Device" part="C_Polarized_US" description="Polarized capacitor, US symbol"/>
+      <property name="LCSC.com PN" value="C2156473"/>
+      <property name="MPN" value="293D106X0010A2TE3"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d8366b21-b237-4c35-b932-a646e991b490</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 0.1UF 50V X7R 0603</field>
+        <field name="Digi-Key_PN">1276-1000-1-ND</field>
+        <field name="LCSC.com PN">C14663</field>
+        <field name="MPN">CL10B104KB8WPNC</field>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Mouser PN">187-CL10B104KB8WPNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 0.1UF 50V X7R 0603"/>
+      <property name="Digi-Key_PN" value="1276-1000-1-ND"/>
+      <property name="MPN" value="CL10B104KB8WPNC"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Mouser PN" value="187-CL10B104KB8WPNC"/>
+      <property name="LCSC.com PN" value="C14663"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00006093109a</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>10uF</value>
+      <footprint>Capacitor_Tantalum_SMD:CP_EIA-3216-18_Kemet-A</footprint>
+      <fields>
+        <field name="LCSC.com PN">C2156473</field>
+        <field name="MPN">293D106X0010A2TE3</field>
+      </fields>
+      <libsource lib="Device" part="C_Polarized_US" description="Polarized capacitor, US symbol"/>
+      <property name="LCSC.com PN" value="C2156473"/>
+      <property name="MPN" value="293D106X0010A2TE3"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cf6b2d7e-4dbc-4b63-a5ae-8d4748a2d4aa</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 0.1UF 50V X7R 0603</field>
+        <field name="Digi-Key_PN">1276-1000-1-ND</field>
+        <field name="LCSC.com PN">C14663</field>
+        <field name="MPN">CL10B104KB8WPNC</field>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Mouser PN">187-CL10B104KB8WPNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 0.1UF 50V X7R 0603"/>
+      <property name="Digi-Key_PN" value="1276-1000-1-ND"/>
+      <property name="MPN" value="CL10B104KB8WPNC"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Mouser PN" value="187-CL10B104KB8WPNC"/>
+      <property name="LCSC.com PN" value="C14663"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-0000605bcb18</tstamps>
+    </comp>
+    <comp ref="C7">
+      <value>4.7uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 4.7UF 10V X5R 0603</field>
+        <field name="Digi-Key_PN">1276-2087-1-ND</field>
+        <field name="LCSC.com PN">C76615</field>
+        <field name="MPN">CL10A475KP8NNNC</field>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Mouser PN">187-CL10A475KP8NNNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 4.7UF 10V X5R 0603"/>
+      <property name="Digi-Key_PN" value="1276-2087-1-ND"/>
+      <property name="MPN" value="CL10A475KP8NNNC"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Mouser PN" value="187-CL10A475KP8NNNC"/>
+      <property name="LCSC.com PN" value="C76615"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00006076e912</tstamps>
+    </comp>
+    <comp ref="C8">
+      <value>47uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <fields>
+        <field name="LCSC.com PN">C607993</field>
+        <field name="MPN">C1206B476M016T</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC.com PN" value="C607993"/>
+      <property name="MPN" value="C1206B476M016T"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00006280cab8</tstamps>
+    </comp>
+    <comp ref="C9">
+      <value>10uF</value>
+      <footprint>Capacitor_Tantalum_SMD:CP_EIA-3216-18_Kemet-A</footprint>
+      <fields>
+        <field name="LCSC.com PN">C2156473</field>
+        <field name="MPN">293D106X0010A2TE3</field>
+      </fields>
+      <libsource lib="Device" part="C_Polarized_US" description="Polarized capacitor, US symbol"/>
+      <property name="LCSC.com PN" value="C2156473"/>
+      <property name="MPN" value="293D106X0010A2TE3"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d41e8515-b53e-4ac4-a931-677a307cb6bb</tstamps>
+    </comp>
+    <comp ref="C10">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 0.1UF 50V X7R 0603</field>
+        <field name="Digi-Key_PN">1276-1000-1-ND</field>
+        <field name="LCSC.com PN">C14663</field>
+        <field name="MPN">CL10B104KB8WPNC</field>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Mouser PN">187-CL10B104KB8WPNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 0.1UF 50V X7R 0603"/>
+      <property name="Digi-Key_PN" value="1276-1000-1-ND"/>
+      <property name="MPN" value="CL10B104KB8WPNC"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Mouser PN" value="187-CL10B104KB8WPNC"/>
+      <property name="LCSC.com PN" value="C14663"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060801f39</tstamps>
+    </comp>
+    <comp ref="C11">
+      <value>10nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 10000PF 50V X7R 0603</field>
+        <field name="Digi-Key_PN">445-1311-1-ND</field>
+        <field name="LCSC.com PN">C76710</field>
+        <field name="MPN">CL10B103KB8NNNL</field>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Mouser PN">187-CL10B103KB8NNNL</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 10000PF 50V X7R 0603"/>
+      <property name="Digi-Key_PN" value="445-1311-1-ND"/>
+      <property name="MPN" value="CL10B103KB8NNNL"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Mouser PN" value="187-CL10B103KB8NNNL"/>
+      <property name="LCSC.com PN" value="C76710"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d259861</tstamps>
+    </comp>
+    <comp ref="C12">
+      <value>47uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <fields>
+        <field name="LCSC.com PN">C607993</field>
+        <field name="MPN">C1206B476M016T</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC.com PN" value="C607993"/>
+      <property name="MPN" value="C1206B476M016T"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00006281cc54</tstamps>
+    </comp>
+    <comp ref="C13">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 0.1UF 50V X7R 0603</field>
+        <field name="Digi-Key_PN">1276-1000-1-ND</field>
+        <field name="LCSC.com PN">C14663</field>
+        <field name="MPN">CL10B104KB8WPNC</field>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Mouser PN">187-CL10B104KB8WPNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 0.1UF 50V X7R 0603"/>
+      <property name="Digi-Key_PN" value="1276-1000-1-ND"/>
+      <property name="MPN" value="CL10B104KB8WPNC"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Mouser PN" value="187-CL10B104KB8WPNC"/>
+      <property name="LCSC.com PN" value="C14663"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d269a12</tstamps>
+    </comp>
+    <comp ref="C14">
+      <value>2.2nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 2200PF 50V X7R 0603</field>
+        <field name="Digi-Key_PN">399-1085-1-ND</field>
+        <field name="LCSC.com PN">C107082</field>
+        <field name="MPN">CL10B222KB8NNNC</field>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Mouser PN">187-CL10B222KB8NNNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 2200PF 50V X7R 0603"/>
+      <property name="Digi-Key_PN" value="399-1085-1-ND"/>
+      <property name="MPN" value="CL10B222KB8NNNC"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Mouser PN" value="187-CL10B222KB8NNNC"/>
+      <property name="LCSC.com PN" value="C107082"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d27482f</tstamps>
+    </comp>
+    <comp ref="C15">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 0.1UF 50V X7R 0603</field>
+        <field name="Digi-Key_PN">1276-1000-1-ND</field>
+        <field name="LCSC.com PN">C14663</field>
+        <field name="MPN">CL10B104KB8WPNC</field>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Mouser PN">187-CL10B104KB8WPNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 0.1UF 50V X7R 0603"/>
+      <property name="Digi-Key_PN" value="1276-1000-1-ND"/>
+      <property name="MPN" value="CL10B104KB8WPNC"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Mouser PN" value="187-CL10B104KB8WPNC"/>
+      <property name="LCSC.com PN" value="C14663"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-0000628b6925</tstamps>
+    </comp>
+    <comp ref="C16">
+      <value>47uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <fields>
+        <field name="LCSC.com PN">C607993</field>
+        <field name="MPN">C1206B476M016T</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC.com PN" value="C607993"/>
+      <property name="MPN" value="C1206B476M016T"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-0000627d8b33</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>RED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <fields>
+        <field name="Description">LED RED CLEAR SMD</field>
+        <field name="Digi-Key_PN">160-1427-1-ND</field>
+        <field name="LCSC.com PN">C113551</field>
+        <field name="MPN">150080RS75000</field>
+        <field name="Manufacturer">Wurth Elektronik</field>
+        <field name="Mouser PN">710-150080RS75000</field>
+      </fields>
+      <libsource lib="Device" part="LED_Small_ALT" description=""/>
+      <property name="Description" value="LED RED CLEAR SMD"/>
+      <property name="Digi-Key_PN" value="160-1427-1-ND"/>
+      <property name="MPN" value="150080RS75000"/>
+      <property name="Manufacturer" value="Wurth Elektronik"/>
+      <property name="Mouser PN" value="710-150080RS75000"/>
+      <property name="LCSC.com PN" value="C113551"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d43c61d</tstamps>
+    </comp>
+    <comp ref="D2">
+      <value>GREEN</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <fields>
+        <field name="Description">LED GREEN CLEAR CHIP SMD</field>
+        <field name="Digi-Key_PN">160-1423-1-ND</field>
+        <field name="LCSC.com PN">C63855</field>
+        <field name="MPN">150080GS75000</field>
+        <field name="Manufacturer">Wurth Elektronik</field>
+        <field name="Mouser PN">710-150080GS75000</field>
+      </fields>
+      <libsource lib="Device" part="LED_Small_ALT" description=""/>
+      <property name="Description" value="LED GREEN CLEAR CHIP SMD"/>
+      <property name="Digi-Key_PN" value="160-1423-1-ND"/>
+      <property name="MPN" value="150080GS75000"/>
+      <property name="Manufacturer" value="Wurth Elektronik"/>
+      <property name="Mouser PN" value="710-150080GS75000"/>
+      <property name="LCSC.com PN" value="C63855"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d43ccbc</tstamps>
+    </comp>
+    <comp ref="D3">
+      <value>RED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <fields>
+        <field name="Description">LED RED CLEAR SMD</field>
+        <field name="Digi-Key_PN">160-1427-1-ND</field>
+        <field name="LCSC.com PN">C113551</field>
+        <field name="MPN">150080RS75000</field>
+        <field name="Manufacturer">Wurth Elektronik</field>
+        <field name="Mouser PN">710-150080RS75000</field>
+      </fields>
+      <libsource lib="Device" part="LED_Small_ALT" description=""/>
+      <property name="Description" value="LED RED CLEAR SMD"/>
+      <property name="Digi-Key_PN" value="160-1427-1-ND"/>
+      <property name="MPN" value="150080RS75000"/>
+      <property name="Manufacturer" value="Wurth Elektronik"/>
+      <property name="Mouser PN" value="710-150080RS75000"/>
+      <property name="LCSC.com PN" value="C113551"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060a32450</tstamps>
+    </comp>
+    <comp ref="D4">
+      <value>GREEN</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <fields>
+        <field name="Description">LED GREEN CLEAR CHIP SMD</field>
+        <field name="Digi-Key_PN">160-1423-1-ND</field>
+        <field name="LCSC.com PN">C63855</field>
+        <field name="MPN">150080GS75000</field>
+        <field name="Manufacturer">Wurth Elektronik</field>
+        <field name="Mouser PN">710-150080GS75000</field>
+      </fields>
+      <libsource lib="Device" part="LED_Small_ALT" description=""/>
+      <property name="Description" value="LED GREEN CLEAR CHIP SMD"/>
+      <property name="Digi-Key_PN" value="160-1423-1-ND"/>
+      <property name="MPN" value="150080GS75000"/>
+      <property name="Manufacturer" value="Wurth Elektronik"/>
+      <property name="Mouser PN" value="710-150080GS75000"/>
+      <property name="LCSC.com PN" value="C63855"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060a335a6</tstamps>
+    </comp>
+    <comp ref="H1">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_3.2mm_M3</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060fa0302</tstamps>
+    </comp>
+    <comp ref="H2">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_3.2mm_M3</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060fa13c4</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>UJC-HP-3-SMT-TR</value>
+      <footprint>footprints:217175-0001</footprint>
+      <fields>
+        <field name="Description">USB Connectors Type C, 3 A, Right Angle, Surface Mount (SMT), Power-Only USB Receptacle</field>
+        <field name="MPN">UJC-HP-3-SMT-TR</field>
+        <field name="Manufacturer">CUI Devices</field>
+        <field name="Mouser PN">490-UJC-HP-3-SMT-TR</field>
+      </fields>
+      <libsource lib="PCB2-rescue" part="217175-0001-2021-07-06_15-16-18" description=""/>
+      <property name="Description" value="USB Connectors Type C, 3 A, Right Angle, Surface Mount (SMT), Power-Only USB Receptacle"/>
+      <property name="MPN" value="UJC-HP-3-SMT-TR"/>
+      <property name="Manufacturer" value="CUI Devices"/>
+      <property name="Mouser PN" value="490-UJC-HP-3-SMT-TR"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060e6e01a</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>Conn_01x07</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x07" description="Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060fde7c2</tstamps>
+    </comp>
+    <comp ref="P1">
+      <value>CONN 2</value>
+      <footprint>greencharge-footprints:MY-18650-02</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000058e76e5c</tstamps>
+    </comp>
+    <comp ref="Q3">
+      <value>DS18B20+</value>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline_Wide</footprint>
+      <fields>
+        <field name="Description">SENSOR DIGITAL -55C-125C TO92-3</field>
+        <field name="Digi-Key_PN">DS18B20+T&amp;RCT-ND</field>
+        <field name="LCSC.com PN">C9753</field>
+        <field name="MPN">DS18B20+T&amp;R</field>
+        <field name="Manufacturer">Maxim Integrated</field>
+        <field name="Mouser PN">700-DS18B20T&amp;R</field>
+      </fields>
+      <libsource lib="PCB2-rescue" part="DS18B20+-iSpindel" description=""/>
+      <property name="Description" value="SENSOR DIGITAL -55C-125C TO92-3"/>
+      <property name="MPN" value="DS18B20+T&amp;R"/>
+      <property name="Manufacturer" value="Maxim Integrated"/>
+      <property name="Digi-Key_PN" value="DS18B20+T&amp;RCT-ND"/>
+      <property name="Mouser PN" value="700-DS18B20T&amp;R"/>
+      <property name="LCSC.com PN" value="C9753"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000058e636b0</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C304415</field>
+        <field name="MPN">SFR03EZPF1002</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-SFR03EZPF1002</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="SFR03EZPF1002"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-SFR03EZPF1002"/>
+      <property name="LCSC.com PN" value="C304415"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060a65c89</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 1K OHM 1% 1/8W 0603</field>
+        <field name="Digi-Key_PN">MCT0603-1.00K-CFCT-ND</field>
+        <field name="LCSC.com PN">C112433</field>
+        <field name="MPN">ESR03EZPF1001</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-ESR03EZPF1001</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 1K OHM 1% 1/8W 0603"/>
+      <property name="Digi-Key_PN" value="MCT0603-1.00K-CFCT-ND"/>
+      <property name="MPN" value="ESR03EZPF1001"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-ESR03EZPF1001"/>
+      <property name="LCSC.com PN" value="C112433"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d45e34f</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 1K OHM 1% 1/8W 0603</field>
+        <field name="Digi-Key_PN">MCT0603-1.00K-CFCT-ND</field>
+        <field name="LCSC.com PN">C112433</field>
+        <field name="MPN">ESR03EZPF1001</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-ESR03EZPF1001</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 1K OHM 1% 1/8W 0603"/>
+      <property name="Digi-Key_PN" value="MCT0603-1.00K-CFCT-ND"/>
+      <property name="MPN" value="ESR03EZPF1001"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-ESR03EZPF1001"/>
+      <property name="LCSC.com PN" value="C112433"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d45df12</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C304415</field>
+        <field name="MPN">SFR03EZPF1002</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-SFR03EZPF1002</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="SFR03EZPF1002"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-SFR03EZPF1002"/>
+      <property name="LCSC.com PN" value="C304415"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005f43f640</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>1.2k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 1.2K OHM 1% 1/8W 0603</field>
+        <field name="Digi-Key_PN">MCT0603-1.20K-CFCT-ND</field>
+        <field name="LCSC.com PN">C163838</field>
+        <field name="MPN">WR06X1201FTL</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-ESR03EZPF1201</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 1.2K OHM 1% 1/8W 0603"/>
+      <property name="Digi-Key_PN" value="MCT0603-1.20K-CFCT-ND"/>
+      <property name="MPN" value="WR06X1201FTL"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-ESR03EZPF1201"/>
+      <property name="LCSC.com PN" value="C163838"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d4bf8f1</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 4.7K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-4.70KHRCT-ND</field>
+        <field name="LCSC.com PN">C99782</field>
+        <field name="MPN">RC0603FR-074K7L</field>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Mouser PN">603-RC0603FR-074K7L</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 4.7K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-4.70KHRCT-ND"/>
+      <property name="MPN" value="RC0603FR-074K7L"/>
+      <property name="Manufacturer" value="Yageo"/>
+      <property name="Mouser PN" value="603-RC0603FR-074K7L"/>
+      <property name="LCSC.com PN" value="C99782"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d665caa</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C304415</field>
+        <field name="MPN">SFR03EZPF1002</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-SFR03EZPF1002</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="SFR03EZPF1002"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-SFR03EZPF1002"/>
+      <property name="LCSC.com PN" value="C304415"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d2645ad</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 4.7K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-4.70KHRCT-ND</field>
+        <field name="LCSC.com PN">C99782</field>
+        <field name="MPN">RC0603FR-074K7L</field>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Mouser PN">603-RC0603FR-074K7L</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 4.7K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-4.70KHRCT-ND"/>
+      <property name="MPN" value="RC0603FR-074K7L"/>
+      <property name="Manufacturer" value="Yageo"/>
+      <property name="Mouser PN" value="603-RC0603FR-074K7L"/>
+      <property name="LCSC.com PN" value="C99782"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d64dcf1</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C304415</field>
+        <field name="MPN">SFR03EZPF1002</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-SFR03EZPF1002</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="SFR03EZPF1002"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-SFR03EZPF1002"/>
+      <property name="LCSC.com PN" value="C304415"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d267de1</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>0.1R</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="LCSC.com PN">C880952</field>
+        <field name="MPN">UCR03EVPFLR100</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC.com PN" value="C880952"/>
+      <property name="MPN" value="UCR03EVPFLR100"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00006265358d</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 1K OHM 1% 1/8W 0603</field>
+        <field name="Digi-Key_PN">MCT0603-1.00K-CFCT-ND</field>
+        <field name="LCSC.com PN">C112433</field>
+        <field name="MPN">ESR03EZPF1001</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-ESR03EZPF1001</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 1K OHM 1% 1/8W 0603"/>
+      <property name="Digi-Key_PN" value="MCT0603-1.00K-CFCT-ND"/>
+      <property name="MPN" value="ESR03EZPF1001"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-ESR03EZPF1001"/>
+      <property name="LCSC.com PN" value="C112433"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060a006dc</tstamps>
+    </comp>
+    <comp ref="R13">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 1K OHM 1% 1/8W 0603</field>
+        <field name="Digi-Key_PN">MCT0603-1.00K-CFCT-ND</field>
+        <field name="LCSC.com PN">C112433</field>
+        <field name="MPN">ESR03EZPF1001</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-ESR03EZPF1001</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 1K OHM 1% 1/8W 0603"/>
+      <property name="Digi-Key_PN" value="MCT0603-1.00K-CFCT-ND"/>
+      <property name="MPN" value="ESR03EZPF1001"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-ESR03EZPF1001"/>
+      <property name="LCSC.com PN" value="C112433"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060a019d3</tstamps>
+    </comp>
+    <comp ref="R14">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 4.7K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-4.70KHRCT-ND</field>
+        <field name="LCSC.com PN">C99782</field>
+        <field name="MPN">RC0603FR-074K7L</field>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Mouser PN">603-RC0603FR-074K7L</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 4.7K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-4.70KHRCT-ND"/>
+      <property name="MPN" value="RC0603FR-074K7L"/>
+      <property name="Manufacturer" value="Yageo"/>
+      <property name="Mouser PN" value="603-RC0603FR-074K7L"/>
+      <property name="LCSC.com PN" value="C99782"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000058e630ef</tstamps>
+    </comp>
+    <comp ref="R15">
+      <value>47k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C146207</field>
+        <field name="MPN">AC0603FR-0747KL</field>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Mouser PN">603-AC0603FR-0747KL</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="AC0603FR-0747KL"/>
+      <property name="Manufacturer" value="Yageo"/>
+      <property name="Mouser PN" value="603-AC0603FR-0747KL"/>
+      <property name="LCSC.com PN" value="C146207"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060e58385</tstamps>
+    </comp>
+    <comp ref="R16">
+      <value>90k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C137671</field>
+        <field name="MPN">RC0603FR-0790K9L</field>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Mouser PN">603-RC0603FR-0790K9L</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="RC0603FR-0790K9L"/>
+      <property name="Manufacturer" value="Yageo"/>
+      <property name="Mouser PN" value="603-RC0603FR-0790K9L"/>
+      <property name="LCSC.com PN" value="C137671"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060e59e7c</tstamps>
+    </comp>
+    <comp ref="R17">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C304415</field>
+        <field name="MPN">SFR03EZPF1002</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-SFR03EZPF1002</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="SFR03EZPF1002"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-SFR03EZPF1002"/>
+      <property name="LCSC.com PN" value="C304415"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060fc728a</tstamps>
+    </comp>
+    <comp ref="R18">
+      <value>5.1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 1K OHM 1% 1/8W 0603</field>
+        <field name="Digi-Key_PN">MCT0603-1.00K-CFCT-ND</field>
+        <field name="LCSC.com PN">C105580</field>
+        <field name="MPN">RC0603FR-075K1L</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 1K OHM 1% 1/8W 0603"/>
+      <property name="Digi-Key_PN" value="MCT0603-1.00K-CFCT-ND"/>
+      <property name="MPN" value="RC0603FR-075K1L"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value=""/>
+      <property name="LCSC.com PN" value="C105580"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-0000614f20b5</tstamps>
+    </comp>
+    <comp ref="R19">
+      <value>5.1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 1K OHM 1% 1/8W 0603</field>
+        <field name="Digi-Key_PN">MCT0603-1.00K-CFCT-ND</field>
+        <field name="LCSC.com PN">C105580</field>
+        <field name="MPN">RC0603FR-075K1L</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Description" value="RES SMD 1K OHM 1% 1/8W 0603"/>
+      <property name="Digi-Key_PN" value="MCT0603-1.00K-CFCT-ND"/>
+      <property name="MPN" value="RC0603FR-075K1L"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value=""/>
+      <property name="LCSC.com PN" value="C105580"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-0000614f20a9</tstamps>
+    </comp>
+    <comp ref="R20">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C304415</field>
+        <field name="MPN">SFR03EZPF1002</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-SFR03EZPF1002</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="SFR03EZPF1002"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-SFR03EZPF1002"/>
+      <property name="LCSC.com PN" value="C304415"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cf6b2ba0-497d-4452-8c0f-e8fd2d33e4b5</tstamps>
+    </comp>
+    <comp ref="R21">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C304415</field>
+        <field name="MPN">SFR03EZPF1002</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-SFR03EZPF1002</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="SFR03EZPF1002"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-SFR03EZPF1002"/>
+      <property name="LCSC.com PN" value="C304415"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3c1648b2-e429-47e0-a829-e89ab7010028</tstamps>
+    </comp>
+    <comp ref="R22">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">RES SMD 10K OHM 1% 1/10W 0603</field>
+        <field name="Digi-Key_PN">311-10.0KHRCT-ND</field>
+        <field name="LCSC.com PN">C304415</field>
+        <field name="MPN">SFR03EZPF1002</field>
+        <field name="Manufacturer">ROHM Semiconductor</field>
+        <field name="Mouser PN">755-SFR03EZPF1002</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="RES SMD 10K OHM 1% 1/10W 0603"/>
+      <property name="Digi-Key_PN" value="311-10.0KHRCT-ND"/>
+      <property name="MPN" value="SFR03EZPF1002"/>
+      <property name="Manufacturer" value="ROHM Semiconductor"/>
+      <property name="Mouser PN" value="755-SFR03EZPF1002"/>
+      <property name="LCSC.com PN" value="C304415"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cbb1cb9f-274b-49c2-99cc-0c2457b7d7b9</tstamps>
+    </comp>
+    <comp ref="S1">
+      <value>slide-SPDT</value>
+      <footprint>iSpindel:Slide_Switch</footprint>
+      <fields>
+        <field name="LCSC.com PN">C2818299</field>
+        <field name="MPN">SK12D07VG4NSPA</field>
+        <field name="Manufacturer">C&amp;K</field>
+        <field name="Mouser PN">611-SK12D07VG4NSPA</field>
+      </fields>
+      <libsource lib="PCB2-rescue" part="slide-SPDT-iSpindel" description=""/>
+      <property name="MPN" value="SK12D07VG4NSPA"/>
+      <property name="Manufacturer" value="C&amp;K"/>
+      <property name="Mouser PN" value="611-SK12D07VG4NSPA"/>
+      <property name="LCSC.com PN" value="C2818299"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000058e64286</tstamps>
+    </comp>
+    <comp ref="SW1">
+      <value>PTS645VL39-2 LFS</value>
+      <footprint>Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx39-2LFS</footprint>
+      <fields>
+        <field name="Description">SWITCH TACTILE SPST-NO 0.05A 12V</field>
+        <field name="Digi-Key_PN">CKN9103-ND</field>
+        <field name="MPN">PTS645VL39-2 LFS</field>
+        <field name="Manufacturer">C&amp;K</field>
+        <field name="Mouser PN">611-PTS645VL392</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Description" value="SWITCH TACTILE SPST-NO 0.05A 12V"/>
+      <property name="Digi-Key_PN" value="CKN9103-ND"/>
+      <property name="MPN" value="PTS645VL39-2 LFS"/>
+      <property name="Manufacturer" value="C&amp;K"/>
+      <property name="Mouser PN" value="611-PTS645VL392"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d333f55</tstamps>
+    </comp>
+    <comp ref="TP1">
+      <value>BAT+</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060f716a3</tstamps>
+    </comp>
+    <comp ref="TP2">
+      <value>BAT-</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060f71b13</tstamps>
+    </comp>
+    <comp ref="TP3">
+      <value>VBUS_TP</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060faffc0</tstamps>
+    </comp>
+    <comp ref="TP4">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>10e8a08b-ab98-4613-a7e9-8cb7dd3e20cb</tstamps>
+    </comp>
+    <comp ref="TP5">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9e92697e-df7a-481c-8ad1-b3daa09bb9ab</tstamps>
+    </comp>
+    <comp ref="TP6">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>95ccaac7-0a7c-4d76-b86d-ab4abd9928a0</tstamps>
+    </comp>
+    <comp ref="TP7">
+      <value>DB18B20_VCC_TP</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060fd735e</tstamps>
+    </comp>
+    <comp ref="TP8">
+      <value>MPU_VCC_TP</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000060ff055f</tstamps>
+    </comp>
+    <comp ref="TP9">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>376fb511-36d6-489d-87e7-f48331018236</tstamps>
+    </comp>
+    <comp ref="TP10">
+      <value>VBAT_AD_TP</value>
+      <footprint>TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded</footprint>
+      <fields>
+        <field name="LCSC.com PN">Does not apply</field>
+        <field name="MPN">Does not apply</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="LCSC.com PN" value="Does not apply"/>
+      <property name="MPN" value="Does not apply"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-0000610409e7</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>RT9080-33GJ5</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <fields>
+        <field name="LCSC.com PN">C2959864</field>
+        <field name="MPN">TPRT9080-33GJ5</field>
+      </fields>
+      <libsource lib="RT9080-33GJ5" part="RT9080-33GJ5" description=""/>
+      <property name="LCSC.com PN" value="C2959864"/>
+      <property name="MPN" value="TPRT9080-33GJ5"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-000062797331</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>ESP32-WROOM-32E (8MB)</value>
+      <footprint>RF_Module:ESP32-WROOM-32</footprint>
+      <datasheet>https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf</datasheet>
+      <fields>
+        <field name="Description">RX TXRX MOD WIFI TRACE ANT SMD</field>
+        <field name="Digi-Key_PN">1965-ESP32-WROOM-32E(8MB)CT-ND</field>
+        <field name="LCSC.com PN">C82899</field>
+        <field name="MPN">ESP32-WROOM-32E(M113EH2800PH3Q0)</field>
+        <field name="Manufacturer">Espressif Systems</field>
+        <field name="Mouser PN">356-ESP32WRM32E128PH</field>
+      </fields>
+      <libsource lib="PCB2-rescue" part="ESP32-WROOM-32U-RF_Module" description=""/>
+      <property name="Description" value="RX TXRX MOD WIFI TRACE ANT SMD"/>
+      <property name="Digi-Key_PN" value="1965-ESP32-WROOM-32E(8MB)CT-ND"/>
+      <property name="MPN" value="ESP32-WROOM-32E(M113EH2800PH3Q0)"/>
+      <property name="Manufacturer" value="Espressif Systems"/>
+      <property name="Mouser PN" value="356-ESP32WRM32E128PH"/>
+      <property name="LCSC.com PN" value="C82899"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005e2d4014</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>TP4056</value>
+      <footprint>SamacSys_Parts:SOIC127P600X175-9N</footprint>
+      <fields>
+        <field name="LCSC.com PN">C382139</field>
+        <field name="MPN">TP4056</field>
+        <field name="Manufacturer">TPOWER</field>
+      </fields>
+      <libsource lib="PCB2-rescue" part="TP4056-main" description=""/>
+      <property name="MPN" value="TP4056"/>
+      <property name="LCSC.com PN" value="C382139"/>
+      <property name="Manufacturer" value="TPOWER"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d376f2c</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>MPU-6050</value>
+      <footprint>Sensor_Motion:InvenSense_QFN-24_4x4mm_P0.5mm</footprint>
+      <datasheet>https://store.invensense.com/datasheets/invensense/MPU-6050_DataSheet_V3%204.pdf</datasheet>
+      <fields>
+        <field name="Description">IMU ACCEL/GYRO 3-AXIS I2C 24QFN</field>
+        <field name="Digi-Key_PN">1428-1007-1-ND</field>
+        <field name="LCSC.com PN">C24112</field>
+        <field name="MPN">MPU-6050</field>
+        <field name="Manufacturer">TDK InvenSense</field>
+        <field name="Mouser PN">410-MPU-6050</field>
+      </fields>
+      <libsource lib="Sensor_Motion" part="MPU-6050" description="InvenSense 6-Axis Motion Sensor, Gyroscope, Accelerometer, I2C"/>
+      <property name="Description" value="IMU ACCEL/GYRO 3-AXIS I2C 24QFN"/>
+      <property name="Digi-Key_PN" value="1428-1007-1-ND"/>
+      <property name="MPN" value="MPU-6050"/>
+      <property name="Manufacturer" value="TDK InvenSense"/>
+      <property name="Mouser PN" value="410-MPU-6050"/>
+      <property name="LCSC.com PN" value="C24112"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="hydrom_V1.0.1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00000000-0000-0000-0000-00005d240d6c</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x02">
+      <description>Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x07">
+      <description>Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x07</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Polarized_US">
+      <description>Polarized capacitor, US symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>CP_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Polarized_US</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Small">
+      <description>Unpolarized capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED_Small_ALT">
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">Device_LED_Small_ALT</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_Small">
+      <description>Resistor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+    <libpart lib="PCB2-rescue" part="217175-0001-2021-07-06_15-16-18">
+      <footprints>
+        <fp>2171750001_MOL</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">217175-0001-2021-07-06_15-16-18</field>
+        <field name="Footprint">2171750001_MOL</field>
+      </fields>
+      <pins>
+        <pin num="A5" name="CC1" type="bidirectional"/>
+        <pin num="A9" name="VBUS" type="power_in"/>
+        <pin num="A12" name="GND" type="power_in"/>
+        <pin num="B5" name="CC2" type="bidirectional"/>
+        <pin num="B9" name="VBUS" type="power_in"/>
+        <pin num="B12" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="PCB2-rescue" part="DS18B20+-iSpindel">
+      <docs>Maxim Integrated</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">DS18B20+-iSpindel</field>
+        <field name="Footprint">TO-92</field>
+        <field name="Datasheet">Maxim Integrated</field>
+        <field name="Description">Temperature sensor; digital thermometer; -55÷125°C; TO92; THT</field>
+        <field name="Price">3.24 USD</field>
+        <field name="MP">DS18B20+</field>
+        <field name="Package">TO-92 Maxim Integrated</field>
+        <field name="Availability">Good</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="input"/>
+        <pin num="2" name="DQ" type="bidirectional"/>
+        <pin num="3" name="VDD" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="PCB2-rescue" part="ESP32-WROOM-32U-RF_Module">
+      <footprints>
+        <fp>ESP32?WROOM?32U*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ESP32-WROOM-32U-RF_Module</field>
+        <field name="Footprint">RF_Module:ESP32-WROOM-32U</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VDD" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="SENSOR_VP" type="input"/>
+        <pin num="5" name="SENSOR_VN" type="input"/>
+        <pin num="6" name="IO34" type="input"/>
+        <pin num="7" name="IO35" type="input"/>
+        <pin num="8" name="IO32" type="bidirectional"/>
+        <pin num="9" name="IO33" type="bidirectional"/>
+        <pin num="10" name="IO25" type="bidirectional"/>
+        <pin num="11" name="IO26" type="bidirectional"/>
+        <pin num="12" name="IO27" type="bidirectional"/>
+        <pin num="13" name="IO14" type="bidirectional"/>
+        <pin num="14" name="IO12" type="bidirectional"/>
+        <pin num="15" name="GND" type="passive"/>
+        <pin num="16" name="IO13" type="bidirectional"/>
+        <pin num="17" name="SHD/SD2" type="bidirectional"/>
+        <pin num="18" name="SWP/SD3" type="bidirectional"/>
+        <pin num="19" name="SCS/CMD" type="bidirectional"/>
+        <pin num="20" name="SCK/CLK" type="bidirectional"/>
+        <pin num="21" name="SDO/SD0" type="bidirectional"/>
+        <pin num="22" name="SDI/SD1" type="bidirectional"/>
+        <pin num="23" name="IO15" type="bidirectional"/>
+        <pin num="24" name="IO2" type="bidirectional"/>
+        <pin num="25" name="IO0" type="bidirectional"/>
+        <pin num="26" name="IO4" type="bidirectional"/>
+        <pin num="27" name="IO16" type="bidirectional"/>
+        <pin num="28" name="IO17" type="bidirectional"/>
+        <pin num="29" name="IO5" type="bidirectional"/>
+        <pin num="30" name="IO18" type="bidirectional"/>
+        <pin num="31" name="IO19" type="bidirectional"/>
+        <pin num="32" name="NC" type="no_connect"/>
+        <pin num="33" name="IO21" type="bidirectional"/>
+        <pin num="34" name="RXD0/IO3" type="bidirectional"/>
+        <pin num="35" name="TXD0/IO1" type="bidirectional"/>
+        <pin num="36" name="IO22" type="bidirectional"/>
+        <pin num="37" name="IO23" type="bidirectional"/>
+        <pin num="38" name="GND" type="passive"/>
+        <pin num="39" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="PCB2-rescue" part="TP4056-main">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TP4056-main</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TEMP" type="passive"/>
+        <pin num="2" name="PROG" type="passive"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="VCC" type="power_in"/>
+        <pin num="5" name="BAT" type="power_out"/>
+        <pin num="6" name="~{STDBY}" type="open_collector"/>
+        <pin num="7" name="~{CHRG}" type="open_collector"/>
+        <pin num="8" name="CE" type="input"/>
+        <pin num="9" name="" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="PCB2-rescue" part="slide-SPDT-iSpindel">
+      <fields>
+        <field name="Reference">S</field>
+        <field name="Value">slide-SPDT-iSpindel</field>
+      </fields>
+      <pins>
+        <pin num="A" name="" type="passive"/>
+        <pin num="B" name="" type="passive"/>
+        <pin num="COM" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="RT9080-33GJ5" part="RT9080-33GJ5">
+      <footprints>
+        <fp>TSOT-23-5_RIT</fp>
+        <fp>TSOT-23-5_RIT-M</fp>
+        <fp>TSOT-23-5_RIT-L</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">RT9080-33GJ5</field>
+        <field name="Footprint">TSOT-23-5_RIT</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="NC" type="no_connect"/>
+        <pin num="5" name="VOUT" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="Sensor_Motion" part="MPU-6050">
+      <description>InvenSense 6-Axis Motion Sensor, Gyroscope, Accelerometer, I2C</description>
+      <docs>https://store.invensense.com/datasheets/invensense/MPU-6050_DataSheet_V3%204.pdf</docs>
+      <footprints>
+        <fp>*QFN-24*4x4mm*P0.5mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MPU-6050</field>
+        <field name="Footprint">Sensor_Motion:InvenSense_QFN-24_4x4mm_P0.5mm</field>
+        <field name="Datasheet">https://store.invensense.com/datasheets/invensense/MPU-6050_DataSheet_V3%204.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="CLKIN" type="input"/>
+        <pin num="6" name="AUX_SDA" type="bidirectional"/>
+        <pin num="7" name="AUX_SCL" type="output"/>
+        <pin num="8" name="VDDIO" type="power_in"/>
+        <pin num="9" name="AD0" type="input"/>
+        <pin num="10" name="REGOUT" type="passive"/>
+        <pin num="11" name="FSYNC" type="input"/>
+        <pin num="12" name="INT" type="output"/>
+        <pin num="13" name="VDD" type="power_in"/>
+        <pin num="18" name="GND" type="power_in"/>
+        <pin num="20" name="CPOUT" type="passive"/>
+        <pin num="23" name="SCL" type="input"/>
+        <pin num="24" name="SDA" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Connector.kicad_sym</uri>
+    </library>
+    <library logical="Connector_Generic">
+      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Connector_Generic.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Device.kicad_sym</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Mechanical.kicad_sym</uri>
+    </library>
+    <library logical="PCB2-rescue">
+      <uri>/Users/simonndungu/Documents/KiCad/hydrom_V1.0.1/src/hydrom_V1.0.1-rescue.lib</uri>
+    </library>
+    <library logical="RT9080-33GJ5">
+      <uri>/Users/simonndungu/Documents/KiCad/hydrom_V1.0.1/src/RT9080-33GJ5.lib</uri>
+    </library>
+    <library logical="Sensor_Motion">
+      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Sensor_Motion.kicad_sym</uri>
+    </library>
+    <library logical="Switch">
+      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Switch.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3V3">
+      <node ref="C12" pin="1" pintype="passive"/>
+      <node ref="C15" pin="1" pintype="passive"/>
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="C7" pin="2" pintype="passive"/>
+      <node ref="C8" pin="1" pintype="passive"/>
+      <node ref="C9" pin="1" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="R12" pin="1" pintype="passive"/>
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="R17" pin="1" pintype="passive"/>
+      <node ref="R20" pin="1" pintype="passive"/>
+      <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="R22" pin="1" pintype="passive"/>
+      <node ref="R4" pin="1" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="VOUT" pintype="output"/>
+      <node ref="U2" pin="2" pinfunction="VDD" pintype="power_in"/>
+    </net>
+    <net code="2" name="/BATT+">
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="P1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R15" pin="1" pintype="passive"/>
+      <node ref="S1" pin="A" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U3" pin="5" pinfunction="BAT" pintype="power_out"/>
+    </net>
+    <net code="3" name="/DB18B20_VCC">
+      <node ref="Q3" pin="3" pinfunction="VDD" pintype="input"/>
+      <node ref="R14" pin="1" pintype="passive"/>
+      <node ref="TP7" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="37" pinfunction="IO23" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="/EN">
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="J3" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="U2" pin="3" pinfunction="EN" pintype="input"/>
+    </net>
+    <net code="5" name="/GPIO12">
+      <node ref="TP4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="14" pinfunction="IO12" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="/GPIO13">
+      <node ref="TP5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="16" pinfunction="IO13" pintype="bidirectional"/>
+    </net>
+    <net code="7" name="/GPIO14">
+      <node ref="TP6" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="13" pinfunction="IO14" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="/GPIO15">
+      <node ref="TP9" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="23" pinfunction="IO15" pintype="bidirectional"/>
+    </net>
+    <net code="9" name="/IO0">
+      <node ref="C10" pin="1" pintype="passive"/>
+      <node ref="J3" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="U2" pin="25" pinfunction="IO0" pintype="bidirectional"/>
+    </net>
+    <net code="10" name="/IO32">
+      <node ref="R20" pin="2" pintype="passive"/>
+      <node ref="U2" pin="8" pinfunction="IO32" pintype="bidirectional"/>
+    </net>
+    <net code="11" name="/IO33">
+      <node ref="R21" pin="2" pintype="passive"/>
+      <node ref="U2" pin="9" pinfunction="IO33" pintype="bidirectional"/>
+    </net>
+    <net code="12" name="/IO34">
+      <node ref="R22" pin="2" pintype="passive"/>
+      <node ref="U2" pin="6" pinfunction="IO34" pintype="input"/>
+    </net>
+    <net code="13" name="/MPU_INT">
+      <node ref="U2" pin="31" pinfunction="IO19" pintype="bidirectional"/>
+      <node ref="U4" pin="12" pinfunction="INT" pintype="output"/>
+    </net>
+    <net code="14" name="/MPU_VCC">
+      <node ref="C11" pin="1" pintype="passive"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+      <node ref="R8" pin="1" pintype="passive"/>
+      <node ref="TP8" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="11" pinfunction="IO26" pintype="bidirectional"/>
+      <node ref="U4" pin="13" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U4" pin="8" pinfunction="VDDIO" pintype="power_in"/>
+    </net>
+    <net code="15" name="/RXD">
+      <node ref="J3" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U2" pin="34" pinfunction="RXD0/IO3" pintype="bidirectional"/>
+    </net>
+    <net code="16" name="/SCL">
+      <node ref="R8" pin="2" pintype="passive"/>
+      <node ref="U2" pin="27" pinfunction="IO16" pintype="bidirectional"/>
+      <node ref="U4" pin="23" pinfunction="SCL" pintype="input"/>
+    </net>
+    <net code="17" name="/SDA">
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="U2" pin="28" pinfunction="IO17" pintype="bidirectional"/>
+      <node ref="U4" pin="24" pinfunction="SDA" pintype="bidirectional"/>
+    </net>
+    <net code="18" name="/TEMP">
+      <node ref="Q3" pin="2" pinfunction="DQ" pintype="bidirectional"/>
+      <node ref="R14" pin="2" pintype="passive"/>
+      <node ref="U2" pin="30" pinfunction="IO18" pintype="bidirectional"/>
+    </net>
+    <net code="19" name="/TXD">
+      <node ref="J3" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="U2" pin="35" pinfunction="TXD0/IO1" pintype="bidirectional"/>
+    </net>
+    <net code="20" name="/VBAT_AD">
+      <node ref="R15" pin="2" pintype="passive"/>
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="TP10" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="7" pinfunction="IO35" pintype="input"/>
+    </net>
+    <net code="21" name="GND">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C10" pin="2" pintype="passive"/>
+      <node ref="C11" pin="2" pintype="passive"/>
+      <node ref="C12" pin="2" pintype="passive"/>
+      <node ref="C13" pin="2" pintype="passive"/>
+      <node ref="C14" pin="2" pintype="passive"/>
+      <node ref="C15" pin="2" pintype="passive"/>
+      <node ref="C16" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="C8" pin="2" pintype="passive"/>
+      <node ref="C9" pin="2" pintype="passive"/>
+      <node ref="J1" pin="A12" pinfunction="GND" pintype="power_in"/>
+      <node ref="J1" pin="B12" pinfunction="GND" pintype="power_in"/>
+      <node ref="J3" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="P1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="Q3" pin="1" pinfunction="GND" pintype="input"/>
+      <node ref="R16" pin="2" pintype="passive"/>
+      <node ref="R18" pin="1" pintype="passive"/>
+      <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="SW1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="TP2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="1" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="15" pinfunction="GND" pintype="passive"/>
+      <node ref="U2" pin="38" pinfunction="GND" pintype="passive"/>
+      <node ref="U2" pin="39" pinfunction="GND" pintype="passive"/>
+      <node ref="U3" pin="1" pinfunction="TEMP" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="9" pintype="power_in"/>
+      <node ref="U4" pin="1" pinfunction="CLKIN" pintype="input"/>
+      <node ref="U4" pin="18" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="22" name="Net-(C1-Pad1)">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="U3" pin="4" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U3" pin="8" pinfunction="CE" pintype="input"/>
+    </net>
+    <net code="23" name="Net-(C13-Pad1)">
+      <node ref="C13" pin="1" pintype="passive"/>
+      <node ref="U4" pin="10" pinfunction="REGOUT" pintype="passive"/>
+    </net>
+    <net code="24" name="Net-(C14-Pad1)">
+      <node ref="C14" pin="1" pintype="passive"/>
+      <node ref="U4" pin="20" pinfunction="CPOUT" pintype="passive"/>
+    </net>
+    <net code="25" name="Net-(C16-Pad1)">
+      <node ref="C16" pin="1" pintype="passive"/>
+      <node ref="S1" pin="COM" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U1" pin="3" pinfunction="EN" pintype="input"/>
+    </net>
+    <net code="26" name="Net-(D1-Pad1)">
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+    </net>
+    <net code="27" name="Net-(D2-Pad1)">
+      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+    </net>
+    <net code="28" name="Net-(D3-Pad1)">
+      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="U2" pin="26" pinfunction="IO4" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="Net-(D3-Pad2)">
+      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+    </net>
+    <net code="30" name="Net-(D4-Pad1)">
+      <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="U2" pin="29" pinfunction="IO5" pintype="bidirectional"/>
+    </net>
+    <net code="31" name="Net-(D4-Pad2)">
+      <node ref="D4" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R13" pin="2" pintype="passive"/>
+    </net>
+    <net code="32" name="Net-(R2-Pad2)">
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="U3" pin="7" pinfunction="~{CHRG}" pintype="open_collector"/>
+    </net>
+    <net code="33" name="Net-(R3-Pad2)">
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="U3" pin="6" pinfunction="~{STDBY}" pintype="open_collector"/>
+    </net>
+    <net code="34" name="Net-(R5-Pad1)">
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="U3" pin="2" pinfunction="PROG" pintype="passive"/>
+    </net>
+    <net code="35" name="Net-(R7-Pad2)">
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="U4" pin="9" pinfunction="AD0" pintype="input"/>
+    </net>
+    <net code="36" name="Net-(R9-Pad2)">
+      <node ref="R9" pin="2" pintype="passive"/>
+      <node ref="U4" pin="11" pinfunction="FSYNC" pintype="input"/>
+    </net>
+    <net code="37" name="Net-(R17-Pad2)">
+      <node ref="R17" pin="2" pintype="passive"/>
+      <node ref="SW1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="12" pinfunction="IO27" pintype="bidirectional"/>
+    </net>
+    <net code="38" name="VBUS">
+      <node ref="J1" pin="A9" pinfunction="VBUS" pintype="power_in"/>
+      <node ref="J1" pin="B9" pinfunction="VBUS" pintype="power_in"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+      <node ref="TP3" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="39" name="unconnected-(J1-PadA5)">
+      <node ref="J1" pin="A5" pinfunction="CC1" pintype="bidirectional+no_connect"/>
+      <node ref="R18" pin="2" pintype="passive+no_connect"/>
+    </net>
+    <net code="40" name="unconnected-(J1-PadB5)">
+      <node ref="J1" pin="B5" pinfunction="CC2" pintype="bidirectional+no_connect"/>
+      <node ref="R19" pin="2" pintype="passive+no_connect"/>
+    </net>
+    <net code="41" name="unconnected-(S1-PadB)">
+      <node ref="S1" pin="B" pintype="passive+no_connect"/>
+    </net>
+    <net code="42" name="unconnected-(U1-Pad4)">
+      <node ref="U1" pin="4" pinfunction="NC" pintype="no_connect"/>
+    </net>
+    <net code="43" name="unconnected-(U2-Pad4)">
+      <node ref="U2" pin="4" pinfunction="SENSOR_VP" pintype="input+no_connect"/>
+    </net>
+    <net code="44" name="unconnected-(U2-Pad5)">
+      <node ref="U2" pin="5" pinfunction="SENSOR_VN" pintype="input+no_connect"/>
+    </net>
+    <net code="45" name="unconnected-(U2-Pad10)">
+      <node ref="U2" pin="10" pinfunction="IO25" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="46" name="unconnected-(U2-Pad17)">
+      <node ref="U2" pin="17" pinfunction="SHD/SD2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="47" name="unconnected-(U2-Pad18)">
+      <node ref="U2" pin="18" pinfunction="SWP/SD3" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="48" name="unconnected-(U2-Pad19)">
+      <node ref="U2" pin="19" pinfunction="SCS/CMD" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="49" name="unconnected-(U2-Pad20)">
+      <node ref="U2" pin="20" pinfunction="SCK/CLK" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="50" name="unconnected-(U2-Pad21)">
+      <node ref="U2" pin="21" pinfunction="SDO/SD0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="51" name="unconnected-(U2-Pad22)">
+      <node ref="U2" pin="22" pinfunction="SDI/SD1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="52" name="unconnected-(U2-Pad24)">
+      <node ref="U2" pin="24" pinfunction="IO2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="53" name="unconnected-(U2-Pad32)">
+      <node ref="U2" pin="32" pinfunction="NC" pintype="no_connect"/>
+    </net>
+    <net code="54" name="unconnected-(U2-Pad33)">
+      <node ref="U2" pin="33" pinfunction="IO21" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="55" name="unconnected-(U2-Pad36)">
+      <node ref="U2" pin="36" pinfunction="IO22" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="56" name="unconnected-(U4-Pad6)">
+      <node ref="U4" pin="6" pinfunction="AUX_SDA" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="57" name="unconnected-(U4-Pad7)">
+      <node ref="U4" pin="7" pinfunction="AUX_SCL" pintype="output+no_connect"/>
+    </net>
+  </nets>
+</export>
